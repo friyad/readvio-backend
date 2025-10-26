@@ -7,6 +7,7 @@ import { json, urlencoded } from "express";
 import { notFoundHandler, errorHandler } from "./middleware/errorHandlers";
 import { bookRouter } from "./routes/book.route";
 import { purchaseRouter } from "./routes/purchase.route";
+import { dashboardRouter } from "./routes/dashboard.route";
 import { toNodeHandler } from "better-auth/node";
 import { auth } from "./config/auth";
 
@@ -27,6 +28,7 @@ app.use(urlencoded({ extended: true }));
 
 app.use("/api/v1/books", bookRouter);
 app.use("/api/v1/purchase", purchaseRouter);
+app.use("/api/v1/dashboard", dashboardRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
