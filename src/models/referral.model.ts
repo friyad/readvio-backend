@@ -1,5 +1,5 @@
 import mongoose, { Schema, Model } from "mongoose";
-import { Referral } from "../types/referral.type";
+import { Referral } from "../types/referral.type.js";
 
 const referralSchema = new Schema<Referral>(
   {

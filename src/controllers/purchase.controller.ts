@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { BookModel } from "../models/book.model";
-import { UserModel } from "../models/user.model";
-import { ReferralModel } from "../models/referral.model";
+import { BookModel } from "../models/book.model.js";
+import { UserModel } from "../models/user.model.js";
+import { ReferralModel } from "../models/referral.model.js";
 import mongoose from "mongoose";
 
 const REFERRAL_CREDIT = 2;

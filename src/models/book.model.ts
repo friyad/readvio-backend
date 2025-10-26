@@ -1,5 +1,5 @@
 import mongoose, { Schema, Model } from "mongoose";
-import { Book, Price } from "../types/book.type";
+import { Book, Price } from "../types/book.type.js";
 
 const PriceSchema = new Schema<Price>({
   amount: { type: Number, required: true, default: 0 },

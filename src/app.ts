@@ -2,19 +2,18 @@ import express, { Application } from "express";
 import helmet from "helmet";
 import cors from "cors";
 import morgan from "morgan";
-import dotenv from "dotenv";
-import { env } from "./config/env";
+import { env } from "./config/env.js";
 import { json, urlencoded } from "express";
-import { notFoundHandler, errorHandler } from "./middleware/errorHandlers";
-import { bookRouter } from "./routes/book.route";
-import { purchaseRouter } from "./routes/purchase.route";
-import { dashboardRouter } from "./routes/dashboard.route";
+import { notFoundHandler, errorHandler } from "./middleware/errorHandlers.js";
+import { bookRouter } from "./routes/book.route.js";
+import { purchaseRouter } from "./routes/purchase.route.js";
+import { dashboardRouter } from "./routes/dashboard.route.js";
 import { toNodeHandler } from "better-auth/node";
-import { auth } from "./config/auth";
+import { auth } from "./config/auth.js";
 
 export const app: Application = express();
 
-dotenv.config();
+app.set("trust proxy", 1);
 
 app.use(helmet());
 app.use(

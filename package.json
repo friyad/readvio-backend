@@ -1,5 +1,6 @@
 {
   "name": "readvio-backend",
+  "type": "module",
   "version": "1.0.0",
   "description": "Readvio is a modern digital library and e-book store where reading meets rewards.",
   "main": "dist/server.js",
