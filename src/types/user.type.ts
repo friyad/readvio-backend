@@ -9,6 +9,7 @@ export interface User extends Document {
   creditScore: number;
   referredBy: mongoose.Types.ObjectId | null;
   referrals: mongoose.Types.ObjectId[];
+  purchasedBooks: mongoose.Types.ObjectId[];
   createdAt: Date;
   updatedAt: Date;
 }

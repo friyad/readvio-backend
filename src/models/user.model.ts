@@ -9,7 +9,7 @@ const userSchema = new Schema<User>(
     image: { type: String, required: false, default: null },
     creditScore: { type: Number, required: true, default: 0 },
     referredBy: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId || null,
       ref: "User",
       required: false,
       default: null,
@@ -17,6 +17,12 @@ const userSchema = new Schema<User>(
     referrals: {
       type: [mongoose.Schema.Types.ObjectId],
       ref: "User",
+      required: false,
+      default: [],
+    },
+    purchasedBooks: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: "Book",
       required: false,
       default: [],
     },
