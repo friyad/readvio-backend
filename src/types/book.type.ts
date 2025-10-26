@@ -11,6 +11,7 @@ export interface Book extends Document {
   title: string;
   author: string;
   coverImageUrl: string;
+  placeholderImageUrl: string;
   rating: number;
   ratingCount: number;
   tags?: string[];

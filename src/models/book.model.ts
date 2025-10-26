@@ -12,6 +12,7 @@ const bookSchema = new Schema<Book>(
     title: { type: String, required: true, trim: true },
     author: { type: String, required: true, trim: true },
     coverImageUrl: { type: String, required: false, trim: true },
+    placeholderImageUrl: { type: String, required: false, trim: true },
     rating: { type: Number, required: true, default: 0 },
     ratingCount: { type: Number, required: true, default: 0 },
     tags: { type: [String], required: false, default: [] },
