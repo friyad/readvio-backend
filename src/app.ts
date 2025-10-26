@@ -2,6 +2,7 @@ import express, { Application } from "express";
 import helmet from "helmet";
 import cors from "cors";
 import morgan from "morgan";
+import dotenv from "dotenv";
 import { env } from "./config/env";
 import { json, urlencoded } from "express";
 import { notFoundHandler, errorHandler } from "./middleware/errorHandlers";
@@ -12,6 +13,8 @@ import { toNodeHandler } from "better-auth/node";
 import { auth } from "./config/auth";
 
 export const app: Application = express();
+
+dotenv.config();
 
 app.use(helmet());
 app.use(
