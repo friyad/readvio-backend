@@ -52,14 +52,6 @@ export async function purchaseBook(req: Request, res: Response): Promise<void> {
         referral.isConverted = true;
         referral.creditEarned += REFERRAL_CREDIT;
         await referral.save();
-      } else {
-        await ReferralModel.create({
-          userId: referredByUser._id,
-          referredUserId: userRes._id,
-          referredOn: new Date(),
-          isConverted: true,
-          creditEarned: REFERRAL_CREDIT,
-        });
       }
     }
   }
