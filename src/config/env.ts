@@ -12,4 +12,5 @@ export const env = {
   PORT: getNumber(process.env.PORT, 5000),
   MONGO_URI: process.env.MONGO_URI ?? "",
   LOG_LEVEL: process.env.LOG_LEVEL ?? "info",
+  FRONTEND_URL: process.env.FRONTEND_URL ?? "http://localhost:3000",
 };
