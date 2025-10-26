@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { BookModel } from "../models/book.model";
 
 export async function listBooks(_req: Request, res: Response): Promise<void> {
-  const books = await BookModel.find().lean();
+  const books = await BookModel.find({}).lean();
   res.json(books);
 }
 

@@ -1,18 +1,22 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose, { Schema, Model } from "mongoose";
+import { Book, Price } from "../types/book.type";
 
-export interface Book extends Document {
-  title: string;
-  author: string;
-  publishedYear?: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
+const PriceSchema = new Schema<Price>({
+  amount: { type: Number, required: true, default: 0 },
+  currency: { type: String, required: true, default: "USD" },
+  formatted: { type: String, required: true, default: "0.00" },
+});
 
 const bookSchema = new Schema<Book>(
   {
     title: { type: String, required: true, trim: true },
     author: { type: String, required: true, trim: true },
-    publishedYear: { type: Number },
+    coverImageUrl: { type: String, required: false, trim: true },
+    rating: { type: Number, required: true, default: 0 },
+    ratingCount: { type: Number, required: true, default: 0 },
+    tags: { type: [String], required: false, default: [] },
+    description: { type: String, required: false, trim: true },
+    price: { type: PriceSchema, required: false, default: null },
   },
   { timestamps: true }
 );
