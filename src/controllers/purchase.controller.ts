@@ -66,5 +66,5 @@ export async function purchaseBook(req: Request, res: Response): Promise<void> {
 
   userRes.purchasedBooks.push(book._id);
   await userRes.save();
-  res.status(200).json({ message: "Book purchased successfully" });
+  res.status(200).json({ data: "Book purchased successfully" });
 }
