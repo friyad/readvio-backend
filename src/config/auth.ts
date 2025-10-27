@@ -21,6 +21,23 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  advanced: {
+    useSecureCookies: process.env.NODE_ENV === "production",
+    cookiePrefix: "readvio",
+    cookieOptions: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "none",
+      domain: process.env.NEXT_PUBLIC_FRONTEND_DOMAIN,
+    },
+    defaultCookieAttributes: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "none",
+      partitioned: false,
+      domain: process.env.NEXT_PUBLIC_FRONTEND_DOMAIN,
+    },
+  },
   user: {
     additionalFields: {
       creditScore: {
