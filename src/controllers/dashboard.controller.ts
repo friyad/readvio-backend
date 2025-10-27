@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { UserModel } from "../models/user.model";
-import { ReferralModel } from "../models/referral.model";
+import { UserModel } from "../models/user.model.js";
+import { ReferralModel } from "../models/referral.model.js";
 import moment from "moment";
-import { BookModel } from "../models/book.model";
+import { BookModel } from "../models/book.model.js";
 
 export async function getDashboard(req: Request, res: Response): Promise<void> {
   const user = req.user;

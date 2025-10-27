@@ -1,11 +1,8 @@
 import mongoose from "mongoose";
-import { env } from "./env";
+import { env } from "./env.js";
 
 export async function connectToDatabase(): Promise<void> {
-  const connection = await mongoose.connect(env.MONGO_URI, {
-    serverSelectionTimeoutMS: 10000,
-    // socketTimeoutMS: 45000, // optional tuning
-  });
+  const connection = await mongoose.connect(env.MONGO_URI, {});
 
   mongoose.connection.on("disconnected", () => {
     // eslint-disable-next-line no-console

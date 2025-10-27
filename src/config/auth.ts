@@ -1,7 +1,7 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { MongoClient } from "mongodb";
-import { env } from "./env";
+import { env } from "./env.js";
 
 const client = new MongoClient(env.MONGO_URI);
 const db = client.db();

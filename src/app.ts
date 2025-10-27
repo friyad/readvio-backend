@@ -2,14 +2,14 @@ import express, { Application } from "express";
 import helmet from "helmet";
 import cors from "cors";
 import morgan from "morgan";
-import { env } from "./config/env";
+import { env } from "./config/env.js";
 import { json, urlencoded } from "express";
-import { notFoundHandler, errorHandler } from "./middleware/errorHandlers";
-import { bookRouter } from "./routes/book.route";
-import { purchaseRouter } from "./routes/purchase.route";
-import { dashboardRouter } from "./routes/dashboard.route";
+import { notFoundHandler, errorHandler } from "./middleware/errorHandlers.js";
+import { bookRouter } from "./routes/book.route.js";
+import { purchaseRouter } from "./routes/purchase.route.js";
+import { dashboardRouter } from "./routes/dashboard.route.js";
 import { toNodeHandler } from "better-auth/node";
-import { auth } from "./config/auth";
+import { auth } from "./config/auth.js";
 
 export const app: Application = express();
 
@@ -19,6 +19,7 @@ app.use(
     origin: env.FRONTEND_URL,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.all("/api/auth/*splat", toNodeHandler(auth));
