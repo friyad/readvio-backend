@@ -2,14 +2,22 @@ import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { MongoClient } from "mongodb";
 import { env } from "./env.js";
+import { nextCookies } from "better-auth/next-js";
 
-const client = new MongoClient(env.MONGO_URI);
+declare global {
+  // eslint-disable-next-line no-var
+  var __mongoClient__: MongoClient | undefined;
+}
+
+const client = global.__mongoClient__ ?? new MongoClient(env.MONGO_URI);
+if (!global.__mongoClient__) {
+  global.__mongoClient__ = client;
+}
+await client.connect();
 const db = client.db();
 
 export const auth = betterAuth({
-  database: mongodbAdapter(db, {
-    client,
-  }),
+  database: mongodbAdapter(db, { client }),
   emailAndPassword: {
     enabled: true,
   },
@@ -38,6 +46,7 @@ export const auth = betterAuth({
       },
     },
   },
+  plugins: [nextCookies()],
 });
 
 export type AuthInstance = typeof auth;
